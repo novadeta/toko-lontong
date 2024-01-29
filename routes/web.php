@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('contents.index');
+});
+
+
+Route::name('product.')->group(function (){
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/pembelian','index')->name('index');
+        Route::post('/pembelian','store')->name('store');
+    });
+
 });
