@@ -34,6 +34,8 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/DataTables/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" href="../assets/vendor/libs/DataTables/css/dataTables.bootstrap5.min.css" />
 
     <!-- Page CSS -->
 
