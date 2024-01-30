@@ -24,6 +24,8 @@ Route::get('/', function () {
 Route::name('product.')->prefix('produk')->group(function (){
     Route::controller(ProductController::class)->group(function () {
         Route::get('/','index')->name('index');
+        Route::get('/search','search')->name('search');
+        Route::get('/tambah','create')->name('create');
         Route::post('/store','store')->name('store');
     });
 
@@ -31,6 +33,7 @@ Route::name('product.')->prefix('produk')->group(function (){
 Route::name('buying.')->prefix('pembelian')->group(function (){
     Route::controller(TransactionsController::class)->group(function () {
         Route::get('/','index')->name('index');
+        Route::get('/tambah-pembelian','create')->name('create');
         Route::post('/pembelian','store')->name('store');
     });
 });

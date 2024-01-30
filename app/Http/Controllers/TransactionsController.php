@@ -9,6 +9,9 @@ class TransactionsController extends Controller
     public function index()  {
         return view('contents.buyings.index');
     }
+    public function create()  {
+        return view('contents.buyings.create');
+    }
     public function store()  {
         return view('contents.index');
     }

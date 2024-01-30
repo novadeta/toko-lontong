@@ -66,7 +66,7 @@
               <h4 class="mb-2">Selamat datang! 👋</h4>
               <p class="mb-4">Silahkan Login terlebih dahulu dan mulailah usahamu</p>
 
-              <form id="formAuthentication" class="mb-3" action="{{ route('auth.authenticate') }}" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('user.authenticate') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="email" class="form-label">Email atau Username</label>

@@ -29,8 +29,8 @@
         <a
           href="{{ route('buying.index') }}"
           class="menu-link">
-          <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
-          <div data-i18n="Dashboard">Pembelian</div>
+          <i class="menu-icon tf-icons bx bx-coin-stack"></i>
+          <div data-i18n="Dashboard">Penjualan</div>
         </a>
       </li>
       <li class="menu-item">
@@ -39,6 +39,14 @@
           class="menu-link">
           <i class="menu-icon tf-icons bx bx-package"></i>
           <div data-i18n="Dashboard">Produk</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a
+          href="{{ route('buying.index') }}"
+          class="menu-link">
+          <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
+          <div data-i18n="Dashboard">Belanja</div>
         </a>
       </li>
       <li class="menu-item">

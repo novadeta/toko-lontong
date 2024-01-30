@@ -8,41 +8,6 @@
             <h4 class="py-3 mb-4">
                 Produk 
               </h4>
-              <div class="card mb-4">
-                <div class="card-widget-separator-wrapper" bis_skin_checked="1">
-                  <div class="card-body card-widget-separator" bis_skin_checked="1">
-                    <div class="row gy-4 gy-sm-1" bis_skin_checked="1">
-                      <div class="col-sm-6 col-lg-3" bis_skin_checked="1">
-                        <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0" bis_skin_checked="1">
-                          <div bis_skin_checked="1">
-                            <h6 class="mb-2">Penjualan</h6>
-                            <h4 class="mb-2">$5,345.43</h4>
-                            <p class="mb-0">
-                                <span class="text-muted me-2">5k orders</span>
-                                <span class="badge bg-label-success">+5.7%</span>
-                            </p>
-                          </div>
-                          <div class="avatar me-sm-4" bis_skin_checked="1">
-                            <span class="avatar-initial rounded bg-label-secondary">
-                              <i class="bx bx-store-alt bx-sm"></i>
-                            </span>
-                          </div>
-                        </div>
-                        <hr class="d-none d-sm-block d-lg-none me-4">
-                      </div>
-                      <div class="col-sm-6 col-lg-3" bis_skin_checked="1">
-                        <div class="d-flex justify-content-between align-items-start" bis_skin_checked="1">
-                          <div bis_skin_checked="1">
-                            <h6 class="mb-2">Affiliate</h6>
-                            <h4 class="mb-2">$8,345.23</h4>
-                            <p class="mb-0"><span class="text-muted me-2">150 orders</span><span class="badge bg-label-danger">-3.5%</span></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="card" bis_skin_checked="1">
                 <div class="card-header" bis_skin_checked="1">
                   <h5 class="card-title">Filter</h5>
@@ -55,84 +20,70 @@
                 <div class="card-datatable table-responsive">
                   <div id="DataTables_Table_0_wrapper" >
                     <div class="card-header d-flex align-items-md-center justify-content-sm-between border-top rounded-0 py-2 flex-wrap ">
-                        <div class="">
-                            <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                                <label>
-                                    <input type="search" class="form-control" placeholder="Search Product" >
-                                </label>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-start justify-content-md-end align-items-baseline">
-                            <div class=" d-flex  align-items-md-center justify-content-sm-center mb-3 mb-sm-0">
-                                <div class="d-flex justify-content-center align-items-center"> 
-                                    <button 
-                                        class="dt-button add-new btn btn-primary" 
-                                        tabindex="0" 
-                                         
-                                        type="button"
+                        <div class="row justify-content-end w-100 mx-auto p-0">
+                            <div class="col col-md-2 p-0 align-self-md-end">
+                                    <div class="my-3">
+                                      <a
+                                        href="{{ route('product.create') }}"
+                                        class="w-100 btn btn-primary"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#modalCenter">  
-                                        <span class="d-none d-sm-inline-block">Tambah</span>
-                                    </button> 
-                                    <!-- Vertically Centered Modal -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="mt-3">
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="modalCenterTitle">Tambah Penjualan</h5>
-                                                <button
-                                                    type="button"
-                                                    class="btn-close"
-                                                    data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                    <label for="nameWithTitle" class="form-label">Nama Produk</label>
-                                                    <input
-                                                        type="text"
-                                                        id="nameWithTitle"
-                                                        class="form-control"
-                                                        placeholder="Enter Name" />
-                                                    </div>
-                                                </div>
-                                                <div class="row g-2">
-                                                    <div class="col mb-0">
-                                                    <label for="emailWithTitle" class="form-label">Harga</label>
-                                                    <input
-                                                        type="number"
-                                                        id="emailWithTitle"
-                                                        class="form-control"
-                                                        placeholder="0" />
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
+                                        data-bs-target="#modalCenter"
+                                        >  
+                                        Tambah
+                                      </a> 
+                                      <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="modalCenterTitle">Tambah Produk</h5>
+                                              <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                             </div>
+                                            <div class="modal-body">
+                                              <div class="row">
+                                                <div class="col mb-3">
+                                                  <label for="nameWithTitle" class="form-label">Nama Produk</label>
+                                                  <input
+                                                    type="text"
+                                                    id="nameWithTitle"
+                                                    class="form-control"
+                                                    placeholder="Masukkan nama prouk" />
+                                                </div>
+                                              </div>
+                                              <div class="row g-2">
+                                                <div class="col mb-0">
+                                                  <label for="picture" class="form-label">Gambar</label>
+                                                  <input
+                                                    type="file"
+                                                    id="piiture"
+                                                    class="filepond" />
+                                                </div>
+                                              </div>
                                             </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                Tutup
+                                              </button>
+                                              <button type="button" class="btn btn-primary">Simpan</button>
+                                            </div>
+                                          </div>
                                         </div>
-                                        </div>
+                                      </div>
                                     </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <table class=" table border-top dataTable no-footer dtr-column collapsed" id="data" aria-describedby="DataTables_Table_0_info" style="width: 1391px;">
+                    </div>
+                    <div class="mx-4">
+                        <table id="data" class="table border-top  collapsed" >
                             <thead>
                                 <tr>
-                                    <th>Tanggal</th>
+                                    <th>Gambar</th>
                                     <th>Nama</th>
-                                    <th>Harga</th>
+                                    <th>Penjualan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -140,17 +91,56 @@
                                     <td>Tiger Nixon</td>
                                     <td>System Architect</td>
                                     <td>Edinburgh</td>
+                                    <td class="d-flex justify-content-start gap-2">
+                                        <a href="" class="btn btn-primary">
+                                            <i class='bx bx-pencil'></i>
+                                        </a>
+                                        <a href="" class="btn btn-danger">
+                                            <i class='bx bx-trash'></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-
+                    </div>
               </div>
         </div>
     </div>
   </div>
   @endsection
   @section('script')
+
+<!-- include jQuery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<!-- include FilePond library -->
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+<!-- include FilePond plugins -->
+<script src="https://unpkg.com/filepond-plugin-image-validate-size/dist/filepond-plugin-image-validate-size.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+
+<!-- include FilePond jQuery adapter -->
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
   <script>
+ // Turn input element into a pond
+    $('.filepond').filepond();
+
+    // Turn input element into a pond with configuration options
+    $('.filepond').filepond({
+        allowMultiple: true,
+        imageValidateSizeMaxWidth : 100,
+        labelIdle : 'Letakkan file gambar disini atau<span class="filepond--label-action"> Browser </span>'
+
+    });
+
+    // Set allowMultiple property to true
+    $('.filepond').filepond('allowMultiple', false);
+
+    // Listen for addfile event
+    $('.filepond').on('FilePond:addfile', function (e) {
+        console.log('file added event', e);
+    });
     new DataTable('#data');
   </script>
   @endsection

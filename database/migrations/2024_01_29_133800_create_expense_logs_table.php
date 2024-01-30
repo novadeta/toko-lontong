@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('expense_logs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->on('products')->references('id');
             $table->timestamps();
         });
     }

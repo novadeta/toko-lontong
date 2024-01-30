@@ -12,5 +12,7 @@ class UserController extends Controller
             'name' => 'required',
             'password' => 'requred'
         ]);
+
+        
     }
 }
