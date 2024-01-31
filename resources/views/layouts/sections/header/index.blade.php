@@ -38,13 +38,14 @@
     <link rel="stylesheet" href="../assets/vendor/libs/DataTables/css/dataTables.bootstrap5.min.css" />
 
     <!-- Page CSS -->
-    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/libs') }}/filepond/filepond.css" rel="stylesheet" />
+    <link href="/app.css" rel="stylesheet" />
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
-
+    @vite('resources/css/app.css')
   </head>
 
   <body>

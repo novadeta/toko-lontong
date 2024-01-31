@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->string('price');
+            $table->enum('debt',['Y','N']);
             $table->json('products')->nullable();
             $table->timestamps();
         });

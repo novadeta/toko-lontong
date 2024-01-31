@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('sales_amount');
-            $table->enum('debt',['Y','N']);
+            $table->integer('sales_amount');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
