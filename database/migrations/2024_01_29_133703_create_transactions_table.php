@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
+            $table->json('products')->nullable();
             $table->string('price');
             $table->enum('debt',['Y','N']);
-            $table->json('products')->nullable();
             $table->timestamps();
         });
     }

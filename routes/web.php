@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExpenseLogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UserController;
@@ -30,11 +31,19 @@ Route::name('product.')->prefix('produk')->group(function (){
     });
 
 });
-Route::name('buying.')->prefix('pembelian')->group(function (){
+Route::name('buying.')->prefix('penjualan')->group(function (){
     Route::controller(TransactionsController::class)->group(function () {
         Route::get('/','index')->name('index');
-        Route::get('/tambah-pembelian','create')->name('create');
-        Route::post('/pembelian','store')->name('store');
+        Route::get('/tambah-penjualan','create')->name('create');
+        Route::post('/penjualan','store')->name('store');
+    });
+});
+
+Route::name('shopping.')->prefix('shopping')->group(function (){
+    Route::controller(ExpenseLogController::class)->group(function () {
+        Route::get('/','index')->name('index');
+        Route::get('/tambah-belanja','create')->name('create');
+        Route::post('/belanja','store')->name('store');
     });
 });
 

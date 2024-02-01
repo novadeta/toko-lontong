@@ -93,6 +93,7 @@
                         <table id="data" class="table border-top  collapsed" >
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Gambar</th>
                                     <th>Nama</th>
                                     <th>Penjualan</th>
@@ -102,11 +103,12 @@
                             <tbody>
                               @foreach($products as $product)
                                 <tr>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->sales_amount }}</td>
+                                  <td>{{ $loop->iteration }}</td>
                                     <td>
                                       <img width="100" height="100" class="object-fit-cover" src="{{ asset('storage/photos/' . $product->image ) }}" alt="" srcset="">
                                     </td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->sales_amount }}</td>
                                     <td class="">
                                       <div class="d-flex justify-content-start gap-2">
                                         <a href="" class="btn btn-primary">
