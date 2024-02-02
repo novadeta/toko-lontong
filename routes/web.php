@@ -36,10 +36,14 @@ Route::name('buying.')->prefix('penjualan')->group(function (){
         Route::get('/','index')->name('index');
         Route::get('/tambah-penjualan','create')->name('create');
         Route::post('/penjualan','store')->name('store');
+        Route::put('/penjualan/{id}','edit')->name('edit');
+        Route::put('/penjualan/{id}','delete')->name('delete');
+        Route::put('/hutang/{debt}','editDebt')->name('debt');
+        Route::delete('/hutang','delete')->name('debt');
     });
 });
 
-Route::name('shopping.')->prefix('shopping')->group(function (){
+Route::name('shopping.')->prefix('belanja')->group(function (){
     Route::controller(ExpenseLogController::class)->group(function () {
         Route::get('/','index')->name('index');
         Route::get('/tambah-belanja','create')->name('create');

@@ -46,6 +46,9 @@ class ProductController extends Controller
         }
         $data['sales_amount'] = 0;
         Product::create($data);
+        if ($request->query('action') == 'shopping') {
+            return redirect()->route('shopping.create')->with('success','Berhasil menambahkan produk');
+        }
         return redirect()->route('product.index')->with('success','Berhasil menambahkan produk');
     }
 

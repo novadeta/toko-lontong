@@ -58,7 +58,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Tanggal</th>
-                                                <th>Nama</th>
+                                                <th>Produk</th>
+                                                <th>Catatan</th>
                                                 <th>Harga</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -78,6 +79,7 @@
                                                             </ul>
                                                         </td>
                                                         <td>Rp.  {{ number_format($debt_transaction->price,0,',',",") }}</td>
+                                                        <td>Rp.  {{ $debt_transaction->note }}</td>
                                                         <td>Rp.  {{ number_format($debt_transaction->price,0,',',",") }}</td>
                                                     </tr>
                                                 @endif
@@ -96,8 +98,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Tanggal</th>
-                                                <th>Nama</th>
+                                                <th>Produk</th>
+                                                <th>Catatan</th>
                                                 <th>Harga</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -116,7 +120,28 @@
                                                                 @endforeach
                                                             </ul>
                                                         </td>
+                                                        <td>
+                                                            {{ $debt_transaction->note }}
+                                                        </td>
                                                         <td>{{ $debt_transaction->price }}</td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-start gap-2">
+                                                                <form action="{{ route('buying.debt',$debt_transaction->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <button type="submit" class="btn btn-success">
+                                                                        <i class='bx bx-check'></i>
+                                                                    </button>
+                                                                </form>
+                                                                <form action="{{ route('buying.debt') }}" method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button type="submit" class="btn btn-danger">
+                                                                        <i class='bx bx-trash'></i>
+                                                                    </button>
+                                                                </form>
+                                                              </div>
+                                                        </td>
                                                     </tr>
                                                 @endif
                                             @endforeach

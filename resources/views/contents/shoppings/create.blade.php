@@ -15,7 +15,7 @@
                       <div class="row mb-3">
                         <label class="col-sm-12 col-form-label" for="basic-default-name">Cari Produk</label>
                         <div class="col-sm-12">
-                          <input type="text" class="form-control" id="search-product" placeholder="Cari produk" />
+                          <input type="text" class="form-control" id="search-product" autofocus placeholder="Cari produk" />
                         </div>
                       </div>
                       <div class="row mb-5" id="item-product"></div>
@@ -35,19 +35,15 @@
                             </div>
                           </div>
                         </div>
-                      <div class="col mb-3">
-                        <label class="d-block mb-2" for="">Hutang?</label>
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                          <input type="radio" class="btn-check" name="debt" id="btniya" value="Y" />
-                          <label class="btn btn-outline-primary" for="btniya">Ya</label>
-                          <input type="radio" class="btn-check" name="debt" id="btntidak" value="N" checked/>
-                          <label class="btn btn-outline-primary" for="btntidak">Tidak</label>
-                        </div>
-                      </div>
                       <div class="col-12 mb-3">
-                        <label class="mb-2" for="total">Total Harga</label>
-                        <input type="number" class="form-control" name="price" min="0" id="total" required/>
+                        <label class="mb-2" for="total">Catatan</label>
+                        <textarea type="number" class="form-control" name="price" min="0" id="total" ></textarea>
                       </div>
+                      
+                      <div class="col-12 mb-3">
+                          <label class="mb-2" for="total">Total Harga</label>
+                          <input type="number" class="form-control" name="price" min="0" id="total" required/>
+                        </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-2 mx-auto">
@@ -110,44 +106,21 @@
 </div>
 @endsection
 @section('script')
+<script src="{{ asset('assets/vendor/libs') }}/filepond/filepond.js"></script>
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
 <script>
 const formProduct = document.querySelector('form');
 const itemSelected = document.getElementById('item-selected');
 const itemProduct = document.getElementById('item-product');
 const searchProduct = document.getElementById('search-product');
-// window.onload = function () {
-//   $.ajax({
-//     url: `{{ route('product.search') }}?search=`,
-//     type: "GET",
-//     headers: {
-//       'X-CSRF-TOKEN' : '{{ csrf_token() }}'
-//     },
-//     success: function ({data}){
-//       Array.from(itemProduct.children).forEach(child => child.remove());
-//       for (let index = 0; index < data.length; index++) {
-//         itemProduct.insertAdjacentHTML('beforeend',
-//         `<div class="col-md-6 col-lg-4">
-//             <div class="card mb-3 cursor-pointer" onclick='selectItem(${data[index]['id']},"${data[index]['name']}")'>
-//               <div class="row g-0">
-//                 <div class="col-4">
-//                   <img class="w-100 h-100 rounded-3 object-fit-cover" src="{{ asset('storage/photos') }}/${data[index]['image']}" alt="Card image" />
-//                 </div>
-//                 <div class="col-8">
-//                   <div class="card-body">
-//                     <h5 class="card-title">${data[index]['name']}</h5>
-//                     <p class="card-text">
-//                       Terjual : 80,000
-//                     </p>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>`);
-//       }
-//     }})
-// }
+const inputProduct = document.querySelector('input[name="name"]');
+
+function buttonModalProduct () {
+  inputProduct.value =  searchProduct.value
+}
 searchProduct.addEventListener('keyup', function (event) {
-  const search  = event.value
+  const search = event.value
   $.ajax({
     url: `{{ route('product.search') }}?search=${event.target.value}`,
     type: "GET",
@@ -155,7 +128,7 @@ searchProduct.addEventListener('keyup', function (event) {
       'X-CSRF-TOKEN' : '{{ csrf_token() }}'
     },
     success: function ({data}){
-      Array.from(itemProduct.children).forEach(child => child.remove());
+    Array.from(itemProduct.children).forEach(child => child.remove());
       if (data.length == 0) {
         return itemProduct.insertAdjacentHTML('beforeend',
         ` <div id="buttonModalProduct" onclick="buttonModalProduct()" class="col-md-12 col-lg-12">
@@ -258,4 +231,14 @@ function calculation(params,id) {
   }
 }
 </script>
+<script>
+  $('.filepond').filepond();
+  
+  $('.filepond').filepond({
+    labelIdle : 'Letakkan file gambar disini atau<span class="filepond--label-action"> Browser </span>',
+    name : 'image',
+    credits: null,
+    storeAsFile: true,
+  });
+  </script>
 @endsection
