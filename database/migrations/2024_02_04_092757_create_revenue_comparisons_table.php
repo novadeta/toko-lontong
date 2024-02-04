@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('revenue_comparisons', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
+            $table->date('date');
             $table->string('revenue_total');
             $table->timestamps();
         });

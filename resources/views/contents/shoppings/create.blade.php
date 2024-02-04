@@ -9,7 +9,7 @@
               <div class="col-xxl">
                 <div class="card mb-4">
                   <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tambah Penjualan</h5>
+                    <h5 class="mb-0">Tambah Pembelian</h5>
                   </div>
                   <div class="card-body">
                       <div class="row mb-3">

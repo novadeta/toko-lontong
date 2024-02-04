@@ -30,7 +30,7 @@
                 {{ $transaction->products[$i]->pieces }}
             </td>
             @if ($rowspan == ($i + 1))
-                <td> Rp. {{ number_format($transaction->price) }}</td>
+                <td> Rp. {{ $transaction->price }}</td>
             @endif
         </tr>
         @endfor

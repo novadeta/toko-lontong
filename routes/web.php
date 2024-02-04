@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenseLogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionsController;
@@ -61,6 +62,15 @@ Route::name('report.')->group(function (){
         Route::get('/laporan-pemasukan','getIncome')->name('income');
         Route::get('/laporan-pengeluaran','getExpense')->name('expense');
         Route::get('/export-pemasukan','exportIncome')->name('exportIncome');
+        Route::get('/export-pengeluaran','exportExpense')->name('exportIncome');
+    });
+});
+
+Route::name('dashboard.')->group(function (){
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/get-top-product','getTopProduct')->name('getTopProduct');
+        Route::get('/get-recap-revenue','getRecapRevenue')->name('getRecapRevenue');
+        Route::get('/get-comparison','getComparison')->name('getComparison');
     });
 });
 

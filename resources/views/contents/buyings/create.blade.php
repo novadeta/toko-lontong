@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <h4 class="py-3 mb-4">
-                 <a href="{{ route('buying.index') }}" class="text-muted fw-light">Pembelian /</a> Tambah Pembelian
+                 <a href="{{ route('buying.index') }}" class="text-muted fw-light">Penjualan /</a> Tambah Penjualan
               </h4>
               <div class="col-xxl">
                 <div class="card mb-4">

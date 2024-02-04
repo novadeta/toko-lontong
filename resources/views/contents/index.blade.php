@@ -160,56 +160,80 @@
         curve: 'smooth',
       },
     }
-
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-
-    var options = {
-          series: [{
-          name: 'Net Profit',
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-        }],
-          chart: {
-          type: 'bar',
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded'
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ['transparent']
-        },
-        xaxis: {
-          categories: ['2001', '2002', '2003', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-        },
-        yaxis: {
-          title: {
-            text: '$ (thousands)'
+    $.ajax({
+      url: `{{ route('dashboard.getRecapRevenue') }}?year=${'2024'}`,
+      type: "GET",
+      headers: {
+        'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+      },
+      success: function ({data}){
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let dataYears = [];
+        for (let index = 0; index < 11; index++) {
+          let monthIndex = null
+          if (data[index] && data[index]['date']) {
+            let dateValue = data[index]['date'];
+            let parsedDate = new Date(dateValue);
+            monthIndex = parsedDate.getMonth()
           }
-        },
-        fill: {
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "$ " + val + " thousands"
-            }
+          
+          if( months[monthIndex] == months[index]){
+            dataYears.push(months[monthIndex]);
+          }else{
+            dataYears.push('');
           }
         }
-        };
+        console.log(dataYears);
 
-    var comparison = new ApexCharts(document.querySelector("#comparison"), options);
-    comparison.render();
-    chart.render();
+        // var optionsComparisonYears = {
+        //       series: [{
+        //       name: 'Pendapatan',
+        //       data: dataYears
+        //     }],
+        //       chart: {
+        //       type: 'bar',
+        //       height: 350
+        //     },
+        //     plotOptions: {
+        //       bar: {
+        //         horizontal: false,
+        //         columnWidth: '55%',
+        //         endingShape: 'rounded'
+        //       },
+        //     },
+        //     dataLabels: {
+        //       enabled: false
+        //     },
+        //     stroke: {
+        //       show: true,
+        //       width: 2,
+        //       colors: ['transparent']
+        //     },
+        //     xaxis: {
+        //       categories: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        //     },
+        //     yaxis: {
+        //       title: {
+        //         text: 'Rp. (thousands)'
+        //       }
+        //     },
+        //     fill: {
+        //       opacity: 1
+        //     },
+        //     tooltip: {
+        //       y: {
+        //         formatter: function (val) {
+        //           return "$ " + val + " thousands"
+        //         }
+        //       }
+        //     }
+        //     };
+        //     var comparison = new ApexCharts(document.querySelector("#comparison"), optionsComparisonYears);
+        //     comparison.render();
+          }
+        })
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      chart.render();
 
     // End CHart
     function generateArrayOfYears() {
