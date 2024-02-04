@@ -66,24 +66,30 @@
               <h4 class="mb-2">Selamat datang! 👋</h4>
               <p class="mb-4">Silahkan Login terlebih dahulu dan mulailah usahamu</p>
 
-              <form id="formAuthentication" class="mb-3" action="{{ route('user.authenticate') }}" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('authenticate') }}" method="POST">
                 @csrf
+                @if(session('message'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session()->get('message') }}
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email atau Username</label>
+                  <label for="email" class="form-label">Username</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="email"
-                    name="email-username"
-                    placeholder="Masukkan Email atau Username"
+                    id="name"
+                    name="name"
+                    placeholder="Masukkan  Username"
                     autofocus />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
+                    {{-- <a href="auth-forgot-password-basic.html">
                       <small>Lupa Password?</small>
-                    </a>
+                    </a> --}}
                   </div>
                   <div class="input-group input-group-merge">
                     <input

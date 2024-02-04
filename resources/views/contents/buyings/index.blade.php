@@ -128,8 +128,6 @@
                                                             <ul class="p-0" style="max-height:150px; overflow-x:hidden; list-style-position: inside;">
                                                                 @foreach($debt_transaction->products as $product)
                                                                     <li>{{ $product->name }} <small>{{ $product->pieces }}pcs</small></li>    
-                                                                    <li>{{ $product->name }} <small>{{ $product->pieces }}pcs</small></li>    
-                                                                    <li>{{ $product->name }} <small>{{ $product->pieces }}pcs</small></li>    
                                                                 @endforeach
                                                             </ul>
                                                         </td>
@@ -146,13 +144,13 @@
                                                                         <i class='bx bx-check'></i>
                                                                     </button>
                                                                 </form>
-                                                                <form action="{{ route('buying.debt.delete',$debt_transaction->id) }}" method="POST">
+                                                                {{-- <form action="{{ route('buying.debt.delete',$debt_transaction->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('delete')
                                                                     <button type="submit" class="btn btn-danger">
                                                                         <i class='bx bx-trash'></i>
                                                                     </button>
-                                                                </form>
+                                                                </form> --}}
                                                               </div>
                                                         </td>
                                                     </tr>

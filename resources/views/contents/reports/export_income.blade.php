@@ -10,7 +10,7 @@
     <tbody>
     @foreach($transactions as $transaction)
     @php $rowspan = count($transaction->products); @endphp
-        <tr >
+        <tr>
             <td rowspan="{{ $rowspan }}"> {{ $transaction->created_at }}</td>
         @for($i = 0; $i < 1; $i++)
             <td>
@@ -19,21 +19,30 @@
             <td>
                 {{ $transaction->products[$i]->pieces}}
             </td>
+            <td> Rp. {{ $transaction->price }}</td>
         @endfor
         </tr>
-        @for($i = 1; $i < $rowspan; $i++)
-        <tr>
-            <td>
-                {{ $transaction->products[$i]->name }}
-            </td>
-            <td>
-                {{ $transaction->products[$i]->pieces }}
-            </td>
-            @if ($rowspan == ($i + 1))
-                <td> Rp. {{ $transaction->price }}</td>
-            @endif
-        </tr>
-        @endfor
+        @if(count($transaction->products) > 0)
+            @for($i = 0; $i < ($rowspan - 1); $i++)
+            <tr>
+                <td>
+                    {{ $transaction->products[$i]->name }}
+                </td>
+                <td>
+                    {{ $transaction->products[$i]->pieces }}
+                </td>
+            </tr>
+            @endfor
+        @else
+            <tr>
+                <td>
+                    {{ $transaction->products[0]->name }}
+                </td>
+                <td>
+                    {{ $transaction->products[0]->pieces }}
+                </td>
+            </tr>
+        @endif
     @endforeach
     </tbody>
 </table>

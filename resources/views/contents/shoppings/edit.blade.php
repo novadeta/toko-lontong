@@ -4,12 +4,12 @@
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <h4 class="py-3 mb-4">
-                 <a href="{{ route('buying.index') }}" class="text-muted fw-light">Pembelian /</a> Tambah Pembelian
+                 <a href="{{ route('shopping.index') }}" class="text-muted fw-light">Pembelian /</a> Edit Pembelian
               </h4>
               <div class="col-xxl">
                 <div class="card mb-4">
                   <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tambah Penjualan</h5>
+                    <h5 class="mb-0">Edit Pembelian</h5>
                   </div>
                   <div class="card-body">
                       <div class="row mb-3">

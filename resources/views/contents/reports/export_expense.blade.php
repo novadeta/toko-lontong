@@ -8,32 +8,41 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($expense as $transaction)
+    @foreach($expenses as $transaction)
     @php $rowspan = count($transaction->products); @endphp
-        <tr >
-            <td rowspan="{{ $rowspan }}"> {{ $transaction->created_at }}</td>
-        @for($i = 0; $i < 1; $i++)
-            <td>
-                {{$transaction->products[$i]->name }}
-            </td>
-            <td>
-                {{ $transaction->products[$i]->pieces}}
-            </td>
-        @endfor
-        </tr>
-        @for($i = 1; $i < $rowspan; $i++)
         <tr>
+            <td rowspan="{{ $rowspan }}"> {{ $transaction->created_at }}</td>
+        @for($index = 0; $index < 1; $index++)
             <td>
-                {{ $transaction->products[$i]->name }}
+                {{$transaction->products[$index]->name }}
             </td>
             <td>
-                {{ $transaction->products[$i]->pieces }}
+                {{ $transaction->products[$index]->pieces}}
             </td>
-            @if ($rowspan == ($i + 1))
-                <td> Rp. {{ $transaction->price }}</td>
-            @endif
-        </tr>
+            <td> Rp. {{ $transaction->price }}</td>
         @endfor
+        </tr>
+        @if(count($transaction->products) > 0)
+            @for($i = 0; $i < ($rowspan - 1); $i++)
+            <tr>
+                <td>
+                    {{ $transaction->products[$i]->name }}
+                </td>
+                <td>
+                    {{ $transaction->products[$i]->pieces }}
+                </td>
+            </tr>
+            @endfor
+        @else
+            <tr>
+                <td>
+                    {{ $transaction->products[0]->name }}
+                </td>
+                <td>
+                    {{ $transaction->products[0]->pieces }}
+                </td>
+            </tr>
+        @endif
     @endforeach
     </tbody>
 </table>

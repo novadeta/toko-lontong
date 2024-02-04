@@ -26,7 +26,7 @@ class TransactionExport implements WithStyles,FromView,WithColumnWidths,ShouldAu
                 'font' => ['bold' => true],
                 'borders' => [
                     'allBorders' => ['borderStyle' => Border::BORDER_DASHED]]
-            ],  
+            ],
 
         ];
     }

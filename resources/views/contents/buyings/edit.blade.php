@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <h4 class="py-3 mb-4">
-                 <a href="{{ route('buying.index') }}" class="text-muted fw-light">Pembelian /</a> Tambah Pembelian
+                 <a href="{{ route('buying.index') }}" class="text-muted fw-light">Penjualan /</a> Edit Penjualan
               </h4>
               <div class="col-xxl">
                 <div class="card mb-4">
@@ -79,7 +79,7 @@
           data-bs-dismiss="modal"
           aria-label="Close"></button>
       </div>
-      <form action="{{ route('product.store',['action' => 'editBuying']) }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('product.store',['action' => 'editbuying']) }}" method="POST" enctype="multipart/form-data">
       <div class="modal-body">
           @csrf 
           <div class="row">

@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::middleware('auth')->group(function (){
 Route::get('/', [ProductController::class,'dashboard'])->name('dashboard');
 
 
@@ -62,7 +64,7 @@ Route::name('report.')->group(function (){
         Route::get('/laporan-pemasukan','getIncome')->name('income');
         Route::get('/laporan-pengeluaran','getExpense')->name('expense');
         Route::get('/export-pemasukan','exportIncome')->name('exportIncome');
-        Route::get('/export-pengeluaran','exportExpense')->name('exportIncome');
+        Route::get('/export-pengeluaran','exportExpense')->name('exportExpense');
     });
 });
 
@@ -74,7 +76,10 @@ Route::name('dashboard.')->group(function (){
     });
 });
 
+});
 Route::get('login', function () {
     return view('auth.login');
-});
-Route::post('authenticate',[UserController::class,'authenticate'])->name('user.authenticate');
+})->name('login');
+
+Route::post('authenticate',[UserController::class,'authenticate'])->name('authenticate');
+Route::get('logout',[UserController::class,'logout'])->name('logout');

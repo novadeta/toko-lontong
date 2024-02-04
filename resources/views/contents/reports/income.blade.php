@@ -5,25 +5,22 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
-            <h4 class="py-3 mb-4">
-                Pemasukan 
-              </h4>
+          <div class="row justify-content-between mb-4">
+            <div class="col-md-4">
+                <h4>
+                    Pemasukan 
+                </h4>
+              </div>
+            <div class="col-md-4 d-flex justify-content-end align-items-start">
+                <a 
+                    href="{{ route('report.exportExpense') }}"
+                    class="btn btn-primary"
+                >
+                    Eksport Data
+                </a> 
+            </div>
+        </div>
               <div class="card" bis_skin_checked="1">
-                {{-- <div class="card-header" bis_skin_checked="1">
-                  <h5 class="card-title">Filter</h5>
-                  <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0" bis_skin_checked="1">
-                    <div class="col-md-4 income_status" bis_skin_checked="1">
-                      <input type="date" class="form-control">
-                    </div>
-                    <div class="col-md-4 income_status" bis_skin_checked="1">
-                      <select id="incomeStatus" class="form-select text-capitalize">
-                        <option value="">Relevansi</option>
-                        <option value="Scheduled">Penjualan tertinggi</option>
-                        <option value="Publish">Penjualan terendah</option>
-                    </select>
-                  </div>
-                  </div>
-                </div> --}}
                 <div class="card-datatable table-responsive">
                   <div id="DataTables_Table_0_wrapper" >
                     <div class="card-header d-flex align-items-md-center justify-content-sm-between border-top rounded-0 py-2 flex-wrap ">
@@ -40,7 +37,6 @@
                                     <th>No</th>
                                     <th>Tanggal</th>
                                     <th>Nama Produk</th>
-                                    <th>Harga</th>
                                     <th>Total Harga</th>
                                 </tr>
                             </thead>
@@ -50,14 +46,13 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $income->created_at }}</td>
                                     <td>
-                                        <ul class="p-0" style="max-height:150px; overflow-x:hidden; list-style-position: inside;">
+                                        <ul class="p-2  list-unstyled" style="max-height:150px; overflow-x:hidden; list-style-position: inside;">
                                             @foreach($income->products as $product)
-                                                <li>{{ $product->name }} <small>{{ $product->pieces }}pcs</small></li>     
+                                                <li>{{ $product->name }} | {{ $product->pieces }} pcs</li>     
                                             @endforeach
                                         </ul>
                                     </td>
                                     <td>{{ $income->price }}</td>
-                                    <td>{{ $income->sales_amount }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

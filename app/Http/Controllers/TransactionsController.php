@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\TransactionExport;
 use App\Models\Product;
+use App\Models\RevenueComparison;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -21,7 +22,7 @@ class TransactionsController extends Controller
                 $product['pieces'] = $value->pieces;
                 array_push($data,$product);
             }
-            return $transaction->products= $data;
+            return $transaction->products = $data;
         });
         return view('contents.buyings.index',['transactions' => $transaction]);
     }
@@ -44,6 +45,19 @@ class TransactionsController extends Controller
                 array_push($products,[
                         'product_id' => $value ,
                         'pieces' => $data['units'][$value]]);
+            }
+            $month = date('m');
+            $year = date('Y');
+            $revenue = RevenueComparison::whereMonth('date',$month)->whereYear('date',$year)->first();
+            if ($revenue) {
+                $revenue->update([
+                    'revenue_total' => $revenue->revenue_total + $data['price']
+                ]);
+            }else {
+                RevenueComparison::create([
+                    'date' => date('Y-m-d'),
+                    'revenue_total' => 0,
+                ]);  
             }
             Transactions::create([
                 'products' =>  json_encode($products),
@@ -88,13 +102,22 @@ class TransactionsController extends Controller
                         'product_id' => $value ,
                         'pieces' => $data['units'][$value]]);
             }
+            $month = date('m');
+            $year = date('Y');
+            $revenue = RevenueComparison::whereMonth('date',$month)->whereYear('date',$year)->first();
+            
+            if ($revenue && $data['price'] != $transaction->price) {
+                $revenue->update([
+                    'revenue_total' => ($revenue->revenue_total - $transaction->price) + $data['price']
+                ]);
+            }
             $transaction->update([
                 'products' =>  json_encode($products),
                 'price' => $data['price'],
                 'debt' => $data['debt'],
                 'note' => $data['note']
             ]);
-            
+
             return redirect()->route('buying.index')->with('success','Berhasil transaksi');
         }
     }
@@ -108,12 +131,12 @@ class TransactionsController extends Controller
     public function updateDebt(Request $request,$id)  {
         $transaction = Transactions::where('id',$id)->first();
         $transaction->update(['debt' => 'N']);
-
+        
         return redirect()->route('buying.index')->with('success','Berhasil transaksi');
     }
     public function deleteDebt($id)  {
         $transaction = Transactions::where('id',$id)->first();
-        $transaction->update(['debt' => 'N']);
+        $transaction->delete();
 
         return redirect()->route('buying.index')->with('success','Berhasil transaksi');
     }

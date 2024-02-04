@@ -49,11 +49,11 @@ class ExpenseLogExport implements WithStyles,FromView,WithColumnWidths,ShouldAut
                 $product['pieces'] = $value->pieces;
                 array_push($data,$product);
             }
-            return  $expense->products = $data;;
+            return  $expense->products = $data;
         });
        
         return view('contents.reports.export_expense', [
-            'transactions' => $expense,
+            'expenses' => $expense,
         ]);
     }
 }

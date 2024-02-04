@@ -122,7 +122,7 @@
                                           <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                               <div class="modal-header">
-                                                <h5 class="modal-title" id="modalProductTitle">Tambah Produk</h5>
+                                                <h5 class="modal-title" id="modalProductTitle">Edit Produk</h5>
                                                 <button
                                                   type="button"
                                                   class="btn-close"

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExpenseLogExport;
 use App\Exports\TransactionExport;
 use App\Models\ExpenseLog;
 use App\Models\Product;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ExpenseLogController extends Controller
 {
@@ -122,11 +122,25 @@ class ExpenseLogController extends Controller
     
     public function getExpense()  {
         $expenses  = ExpenseLog::get();
+        $expenses->map(function($expense) {
+            $data =  array();
+            $decode = json_decode($expense->products);
+            foreach ($decode as $value) {
+                $product = Product::where("id",$value->product_id)->first();
+                $product['pieces'] = $value->pieces;
+                array_push($data,$product);
+            }
+            return $expense->products= $data;
+        });
         return view('contents.reports.expense',['expenses' => $expenses]);
     }
 
     public function exportIncome() 
     {
         return (new TransactionExport)->download('data-pemasukan.xlsx');
+    }
+    public function exportExpense() 
+    {
+        return (new ExpenseLogExport)->download('data-pengeluaran.xlsx');
     }
 }

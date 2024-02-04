@@ -56,14 +56,11 @@ class ProductController extends Controller
             return redirect()->route('shopping.create')->with('success','Berhasil menambahkan produk');
         }elseif ($request->query('action') == 'buying') {
             return redirect()->route('buying.create')->with('success','Berhasil menambahkan produk');
+        }elseif ($request->query('action') == 'editBuying') {
+            return redirect()->route('buying.index')->with('success','Berhasil menambahkan produk');
         }else{
             return redirect()->route('product.index')->with('success','Berhasil menambahkan produk');
         }
-    }
-
-    public function show($id)  {
-        $product = Product::find($id);
-        // return redirect()->route('product.')->with('success','Berhasil menambahkan produk');
     }
 
     public function update(Request $request,$id)  {

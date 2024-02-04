@@ -68,7 +68,7 @@
         </ul>
       </li>
       <!-- Pengaturan Akun -->
-      <li class="menu-item">
+      {{-- <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-user-account"></i>
           <div data-i18n="Account Settings">Pengaturan Akun</div>
@@ -90,10 +90,10 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> --}}
       <li class="menu-item">
         <a
-          href="{{ '/' }}"
+          href="{{ route('logout') }}"
           class="menu-link">
           <i class="menu-icon tf-icons bx bx-log-out"></i>
           <div data-i18n="Dashboard">Logout</div>
