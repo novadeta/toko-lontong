@@ -126,14 +126,14 @@
                                                         <td>{{ $debt_transaction->price }}</td>
                                                         <td>
                                                             <div class="d-flex justify-content-start gap-2">
-                                                                <form action="{{ route('buying.debt',$debt_transaction->id) }}" method="POST">
+                                                                <form action="{{ route('buying.debt.update',$debt_transaction->id) }}" method="POST">
                                                                     @csrf
-                                                                    @method('put')
+                                                                    @method('PUT')
                                                                     <button type="submit" class="btn btn-success">
                                                                         <i class='bx bx-check'></i>
                                                                     </button>
                                                                 </form>
-                                                                <form action="{{ route('buying.debt') }}" method="POST">
+                                                                <form action="{{ route('buying.debt.delete',$debt_transaction->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('delete')
                                                                     <button type="submit" class="btn btn-danger">

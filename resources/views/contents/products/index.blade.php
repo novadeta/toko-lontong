@@ -95,7 +95,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Gambar</th>
-                                    <th>Nama</th>
+                                    <th>Produk</th>
                                     <th>Penjualan</th>
                                     <th>Aksi</th>
                                 </tr>

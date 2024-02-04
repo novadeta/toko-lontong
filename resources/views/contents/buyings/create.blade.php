@@ -72,7 +72,7 @@
           data-bs-dismiss="modal"
           aria-label="Close"></button>
       </div>
-      <form action="{{ route('product.store',['action' => 'shopping']) }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('product.store',['action' => 'buying']) }}" method="POST" enctype="multipart/form-data">
       <div class="modal-body">
           @csrf 
           <div class="row">
@@ -115,6 +115,7 @@ const formProduct = document.querySelector('form');
 const itemSelected = document.getElementById('item-selected');
 const itemProduct = document.getElementById('item-product');
 const searchProduct = document.getElementById('search-product');
+const inputProduct = document.querySelector('input[name="name"]');
 // window.onload = function () {
 //   $.ajax({
 //     url: `{{ route('product.search') }}?search=`,
@@ -146,6 +147,9 @@ const searchProduct = document.getElementById('search-product');
 //       }
 //     }})
 // }
+function buttonModalProduct () {
+  inputProduct.value =  searchProduct.value
+}
 searchProduct.addEventListener('keyup', function (event) {
   const search  = event.value
   $.ajax({

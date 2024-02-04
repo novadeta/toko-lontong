@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('expense_logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('products');
-            $table->text('note');
+            $table->json('products')->nullable();
+            $table->text('note')->nullable();
+            $table->integer('price');
             $table->timestamps();
         });
     }

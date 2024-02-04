@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TransactionExport;
 use App\Models\Product;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransactionsController extends Controller
 {
     public function index()  {
         $transaction  = Transactions::get();
-        // $debt_transaction =  Transactions::where('debt','Y')->get();
         $transaction->map(function($transaction) {
             $data =  array();
-            $hehe =  null;
             $decode = json_decode($transaction->products);
             foreach ($decode as $value) {
                 $product = Product::where("id",$value->product_id)->first();
@@ -51,5 +51,18 @@ class TransactionsController extends Controller
             ]);
             return redirect()->route('buying.create')->with('success','Berhasil transaksi');
         }
+    }
+
+    public function updateDebt(Request $request,$id)  {
+        $transaction = Transactions::where('id',$id)->first();
+        $transaction->update(['debt' => 'N']);
+
+        return redirect()->route('buying.index')->with('success','Berhasil transaksi');
+    }
+    public function deleteDebt(Request $request,$id)  {
+        $transaction = Transactions::where('id',$id)->first();
+        $transaction->update(['debt' => 'N']);
+
+        return redirect()->route('buying.index')->with('success','Berhasil transaksi');
     }
 }

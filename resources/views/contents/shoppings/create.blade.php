@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <h4 class="py-3 mb-4">
-                 <a href="{{ route('buying.index') }}" class="text-muted fw-light">Pembelian /</a> Tambah Pembelian
+                 <a href="{{ route('shopping.index') }}" class="text-muted fw-light">Pembelian /</a> Tambah Pembelian
               </h4>
               <div class="col-xxl">
                 <div class="card mb-4">
@@ -25,7 +25,7 @@
               <div class="col-xxl">
                 <div class="card mb-4">
                   <div class="card-body">
-                    <form method="POST" action="{{ route('buying.store') }}">
+                    <form method="POST" action="{{ route('shopping.store') }}">
                       @csrf
                     <div class="row g-2 justify-content-center">
                         <div class="col-lg-12 mb-3">
@@ -37,7 +37,7 @@
                         </div>
                       <div class="col-12 mb-3">
                         <label class="mb-2" for="total">Catatan</label>
-                        <textarea type="number" class="form-control" name="price" min="0" id="total" ></textarea>
+                        <textarea type="number" class="form-control" name="note" min="0" id="total" ></textarea>
                       </div>
                       
                       <div class="col-12 mb-3">

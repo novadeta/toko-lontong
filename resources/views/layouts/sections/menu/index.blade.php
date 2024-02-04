@@ -56,12 +56,12 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="pages-account-settings-account.html" class="menu-link">
+            <a href="{{ route('report.income') }}" class="menu-link">
               <div data-i18n="Account">Pemasukan</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="pages-account-settings-notifications.html" class="menu-link">
+            <a href="{{ route('report.expense') }}" class="menu-link">
               <div data-i18n="Notifications">Pengeluaran</div>
             </a>
           </li>

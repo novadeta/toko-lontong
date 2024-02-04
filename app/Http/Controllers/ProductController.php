@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -48,8 +49,11 @@ class ProductController extends Controller
         Product::create($data);
         if ($request->query('action') == 'shopping') {
             return redirect()->route('shopping.create')->with('success','Berhasil menambahkan produk');
+        }elseif ($request->query('action') == 'buying') {
+            return redirect()->route('buying.create')->with('success','Berhasil menambahkan produk');
+        }else{
+            return redirect()->route('product.index')->with('success','Berhasil menambahkan produk');
         }
-        return redirect()->route('product.index')->with('success','Berhasil menambahkan produk');
     }
 
     public function show($id)  {
@@ -70,6 +74,4 @@ class ProductController extends Controller
         Product::create($data);
         // return redirect()->route('admin.carousel')->with('success','Berhasil menambahkan produk');
     }
-
-    
 }

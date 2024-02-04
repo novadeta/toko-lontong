@@ -38,8 +38,8 @@ Route::name('buying.')->prefix('penjualan')->group(function (){
         Route::post('/penjualan','store')->name('store');
         Route::put('/penjualan/{id}','edit')->name('edit');
         Route::put('/penjualan/{id}','delete')->name('delete');
-        Route::put('/hutang/{debt}','editDebt')->name('debt');
-        Route::delete('/hutang','delete')->name('debt');
+        Route::put('/hutang/{debt}','updateDebt')->name('debt.update');
+        Route::delete('/hutang','delete')->name('debt.delete');
     });
 });
 
@@ -48,6 +48,14 @@ Route::name('shopping.')->prefix('belanja')->group(function (){
         Route::get('/','index')->name('index');
         Route::get('/tambah-belanja','create')->name('create');
         Route::post('/belanja','store')->name('store');
+    });
+});
+
+Route::name('report.')->group(function (){
+    Route::controller(ExpenseLogController::class)->group(function () {
+        Route::get('/laporan-pemasukan','getIncome')->name('income');
+        Route::get('/laporan-pengeluaran','getExpense')->name('expense');
+        Route::get('/export-pemasukan','exportIncome')->name('exportIncome');
     });
 });
 
