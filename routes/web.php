@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('contents.index');
-});
+Route::get('/', [ProductController::class,'dashboard'])->name('dashboard');
 
 
 Route::name('product.')->prefix('produk')->group(function (){
@@ -28,6 +26,9 @@ Route::name('product.')->prefix('produk')->group(function (){
         Route::get('/search','search')->name('search');
         Route::get('/tambah','create')->name('create');
         Route::post('/store','store')->name('store');
+        Route::get('/{id}','edit')->name('edit');
+        Route::put('/{id}','update')->name('update');
+        Route::delete('/{id}','delete')->name('delete');
     });
 
 });
@@ -36,10 +37,11 @@ Route::name('buying.')->prefix('penjualan')->group(function (){
         Route::get('/','index')->name('index');
         Route::get('/tambah-penjualan','create')->name('create');
         Route::post('/penjualan','store')->name('store');
-        Route::put('/penjualan/{id}','edit')->name('edit');
-        Route::put('/penjualan/{id}','delete')->name('delete');
+        Route::get('/penjualan/{id}','edit')->name('edit');
+        Route::put('/penjualan/{id}','update')->name('update');
+        Route::delete('/penjualan/{id}','delete')->name('delete');
         Route::put('/hutang/{debt}','updateDebt')->name('debt.update');
-        Route::delete('/hutang','delete')->name('debt.delete');
+        Route::delete('/hutang/{debt}','deleteDebt')->name('debt.delete');
     });
 });
 
@@ -47,7 +49,10 @@ Route::name('shopping.')->prefix('belanja')->group(function (){
     Route::controller(ExpenseLogController::class)->group(function () {
         Route::get('/','index')->name('index');
         Route::get('/tambah-belanja','create')->name('create');
-        Route::post('/belanja','store')->name('store');
+        Route::post('/','store')->name('store');
+        Route::get('/{id}','edit')->name('edit');
+        Route::put('/{id}','UPDATE')->name('update');
+        Route::delete('/{id}','delete')->name('delete');
     });
 });
 

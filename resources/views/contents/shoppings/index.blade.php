@@ -9,21 +9,6 @@
                 Belanja 
               </h4>
               <div class="card" bis_skin_checked="1">
-                {{-- <div class="card-header" bis_skin_checked="1">
-                  <h5 class="card-title">Filter</h5>
-                  <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0" bis_skin_checked="1">
-                    <div class="col-md-4 product_status" bis_skin_checked="1">
-                      <input type="date" class="form-control">
-                    </div>
-                    <div class="col-md-4 product_status" bis_skin_checked="1">
-                      <select id="ProductStatus" class="form-select text-capitalize">
-                        <option value="">Relevansi</option>
-                        <option value="Scheduled">Penjualan tertinggi</option>
-                        <option value="Publish">Penjualan terendah</option>
-                    </select>
-                  </div>
-                  </div>
-                </div> --}}
                 <div class="card-datatable table-responsive">
                   <div id="DataTables_Table_0_wrapper" >
                     <div class="card-header d-flex align-items-md-center justify-content-sm-between border-top rounded-0 py-2 flex-wrap ">
@@ -45,31 +30,39 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Gambar</th>
-                                    <th>Nama</th>
-                                    <th>Penjualan</th>
+                                    <th>Produk</th>
+                                    <th>Catatan</th>
+                                    <th>Total Harga</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              @foreach($shoppings as $product)
+                              @foreach($shoppings as $shopping)
                                 <tr>
                                   <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                      <img width="100" height="100" class="object-fit-cover" src="{{ asset('storage/photos/' . $product->image ) }}" alt="" srcset="">
-                                    </td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->sales_amount }}</td>
-                                    <td class="">
-                                      <div class="d-flex justify-content-start gap-2">
-                                        <a href="" class="btn btn-primary">
-                                            <i class='bx bx-pencil'></i>
-                                        </a>
-                                        <a href="" class="btn btn-danger">
+                                  <td>
+                                    <ul class="p-0" style="max-height:150px; overflow-x:hidden; list-style-position: inside;">
+                                        @foreach($shopping->products as $product)
+                                            <li>{{ $product->name }} <small>{{ $product->pieces }}pcs</small></li>     
+                                        @endforeach
+                                    </ul>
+                                  </td>
+                                  <td>{{ $shopping->note }}</td>
+                                  <td>Rp. {{  number_format($shopping->price) }}</td>
+                                  <td class="">
+                                    <div class="d-flex justify-content-start gap-2">
+                                      <a href="{{ route('shopping.edit',$shopping->id) }}" class="btn btn-primary">
+                                          <i class='bx bx-pencil'></i>
+                                      </a>
+                                      <form class="deleteButton" action="{{ route('shopping.delete',$shopping->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
                                             <i class='bx bx-trash'></i>
-                                        </a>
-                                      </div>
-                                    </td>
+                                        </button>
+                                      </form>
+                                    </div>
+                                  </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -102,5 +95,44 @@
       });
 
     new DataTable('#data');
+    const buttonDelete = document.querySelectorAll('.deleteButton')
+    buttonDelete.forEach(element => {
+      element.addEventListener('submit', function (event) {
+        event.preventDefault()
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-primary mx-2",
+            cancelButton: "btn btn-danger"
+          },
+          buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+        title: "Apakah Kamu Yakin?",
+        text: "Kamu tidak akan mendapatkannya kembali",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: "Kembali"
+      }).then((result) => {
+        if (result.isConfirmed) {
+         $.ajax({
+           url: `${event.target.action}`,
+           type: "POST",
+           headers: {
+             'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+           },
+           data: {
+             '_method' : 'DELETE'
+           },
+           success: function ({data}){
+             location.reload();
+           }
+         });
+       }
+      })
+    })  
+    });
+
   </script>
   @endsection

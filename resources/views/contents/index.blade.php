@@ -31,158 +31,102 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-4 order-1">
-        <div class="row">
-          <div class="col-lg-6 col-md-12 col-6 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                  <div class="avatar flex-shrink-0">
-                    <img
-                      src="../assets/img/icons/unicons/chart-success.png"
-                      alt="chart success"
-                      class="rounded" />
-                  </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn p-0"
-                      type="button"
-                      id="cardOpt3"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                  </div>
-                </div>
-                <span class="fw-medium d-block mb-1">Pendapatan</span>
-                <h3 class="card-title mb-2">$12,628</h3>
-                <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-12 col-6 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                  <div class="avatar flex-shrink-0">
-                    <img
-                      src="../assets/img/icons/unicons/wallet-info.png"
-                      alt="Credit Card"
-                      class="rounded" />
-                  </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn p-0"
-                      type="button"
-                      id="cardOpt6"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                  </div>
-                </div>
-                <span>Pengeluaran</span>
-                <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-        <div class="row">
-          <div class="col-6 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                  <div class="avatar flex-shrink-0">
-                    <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
-                  </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn p-0"
-                      type="button"
-                      id="cardOpt4"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                  </div>
-                </div>
-                <span class="d-block mb-1">Produk</span>
-                <h3 class="card-title text-nowrap mb-2">2,456</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="col-md-6 col-lg-4 order-1 mb-4">
-      <div class="card h-100">
-        <div class="card-header">
-          <ul class="nav nav-pills" role="tablist">
-            <li class="nav-item">
-              <button
-                type="button"
-                class="nav-link active"
-                role="tab"
-                data-bs-toggle="tab"
-                data-bs-target="#navs-tabs-line-card-income"
-                aria-controls="navs-tabs-line-card-income"
-                aria-selected="true">
-                Income
-              </button>
-            </li>
-            <li class="nav-item">
-              <button type="button" class="nav-link" role="tab">Expenses</button>
-            </li>
-            <li class="nav-item">
-              <button type="button" class="nav-link" role="tab">Profit</button>
-            </li>
-          </ul>
-        </div>
-        <div class="card-body px-0">
-          <div class="tab-content p-0">
-            <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
-              <div class="d-flex p-4 pt-3">
-                <div class="avatar flex-shrink-0 me-3">
-                  <img src="../assets/img/icons/unicons/wallet.png" alt="User" />
-                </div>
-                <div>
-                  <small class="text-muted d-block">Total Balance</small>
-                  <div class="d-flex align-items-center">
-                    <h6 class="mb-0 me-1">$459.10</h6>
-                    <small class="text-success fw-medium">
-                      <i class="bx bx-chevron-up"></i>
-                      42.9%
-                    </small>
-                  </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-8 order-1 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <ul class="nav nav-pills justify-content-center" role="tablist">
+              <li class="nav-item">
+                <h5>
+                  Rekapitulasi Pendapatan
+                </h5>
+              </li>
+            </ul>
+            <div class="d-flex justify-content-end">
+              <div class="dropdown">
+                <button
+                  class="btn btn-md btn-outline-primary dropdown-toggle"
+                  type="button"
+                  id="growthReportId"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                  2019
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId" style="max-height: 300px; overflow-x:hidden;">
+                  <a class="dropdown-item" href="javascript:void(0);">2021</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2020</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                  <a class="dropdown-item" href="javascript:void(0);">2019</a>
                 </div>
               </div>
-              <div id="incomeChart"></div>
-              <div class="d-flex justify-content-center pt-4 gap-2">
-                <div class="flex-shrink-0">
-                  <div id="expensesOfWeek"></div>
-                </div>
-                <div>
-                  <p class="mb-n1 mt-1">Expenses This Week</p>
-                  <small class="text-muted">$39 less than last week</small>
-                </div>
+            </div>
+          </div>
+          <div class="card-body px-0">
+            <div class="tab-content p-0">
+              <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
+                <div id="chart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4 order-1 mb-4">
+        <!-- Order Statistics -->
+        <div class="col-md-6 col-lg-4 col-xl-12 order-0 mb-4">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center justify-content-between pb-0">
+              <div class="card-title mb-3">
+                <h5 class="m-0 me-2">Produk terjual tertinggi</h5>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul class="p-0 m-0">
+                <li class="d-flex mb-2 pb-1">
+                  <div class="avatar flex-shrink-0 me-3">
+                    <span class="avatar-initial rounded bg-label-warning">
+                      1
+                    </span>
+                  </div>
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                    <div class="me-2">
+                      <h6 class="mb-0">Electronic</h6>
+                    </div>
+                    <div class="user-progress">
+                      <small class="fw-medium">7 Pcs</small>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--/ Order Statistics -->
+      </div>
+      <div class="col-md-6 col-lg-12 order-1 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <ul class="nav nav-pills justify-content-center" role="tablist">
+              <li class="nav-item">
+                <h5>
+                  Pendapatan Tiap Tahun
+                </h5>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body px-0">
+            <div class="tab-content p-0">
+              <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
+                <div id="comparison"></div>
               </div>
             </div>
           </div>
@@ -190,4 +134,97 @@
       </div>
     </div>
   </div>
+  @endsection
+
+  @section('script')
+  <script>
+    // Chart
+    var options = {
+      chart: {
+        type: 'area',
+      },
+      dataLabels: {
+        formatter: (val) => {
+          return 'Rp. ' + val 
+        }
+      },
+      series: [{
+        name: 'sales',
+        data: [2000000,50000,35,50,49,60,70,91,125],    
+      }
+    ],
+      xaxis: {
+        categories: ['Januari','Februari','Maret','April','Mei','Juni','Juli', 'Agustus','September','Oktober','November','Desember']
+      },
+      stroke: {
+        curve: 'smooth',
+      },
+    }
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    var options = {
+          series: [{
+          name: 'Net Profit',
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        }],
+          chart: {
+          type: 'bar',
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '55%',
+            endingShape: 'rounded'
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['2001', '2002', '2003', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+        yaxis: {
+          title: {
+            text: '$ (thousands)'
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands"
+            }
+          }
+        }
+        };
+
+    var comparison = new ApexCharts(document.querySelector("#comparison"), options);
+    comparison.render();
+    chart.render();
+
+    // End CHart
+    function generateArrayOfYears() {
+      var max = new Date().getFullYear()
+      var min = max - 9
+      var years = []
+
+      for (var i = max; i >= min; i--) {
+        years.push(i)
+      }
+      return years
+    }
+    // End Of CHart
+    var years = generateArrayOfYears().toString();
+
+    document.getElementById('years').innerHTML = years;
+  </script>
   @endsection

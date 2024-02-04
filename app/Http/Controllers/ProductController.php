@@ -22,6 +22,11 @@ class ProductController extends Controller
         return response()->json(['data' => $product],200);
     }   
 
+    public function dashboard()  {
+        $products = Product::all();
+
+        return view('contents.index',['products' => $products]);
+    }
     public function index()  {
         $products = Product::all();
 
@@ -61,17 +66,35 @@ class ProductController extends Controller
         // return redirect()->route('product.')->with('success','Berhasil menambahkan produk');
     }
 
-    public function update(Request $request)  {
+    public function update(Request $request,$id)  {
         $data = $request->validate([
             'name' => 'required',
-            'debt' => [
-                'required',
-                Rule::in(['Y','N'])
-            ],
-            'sales_amount' => 'required'
+            'image' => 'nullable'
         ]);
-
-        Product::create($data);
-        // return redirect()->route('admin.carousel')->with('success','Berhasil menambahkan produk');
+        $product = Product::where('id', $id)->first();
+        if ($request->has('image')) {
+            $tmp = $request->file('image');
+            $random_string = Str::random(15);
+            $extension = $tmp->extension();
+            $name = date("Y-m-d") .  $random_string . '.' . $extension;
+            $tmp->storePubliclyAs('photos/',$name,'public');
+            $data['image'] = $name;
+            $product->update([
+                'name' => $data['name'],
+                'image' => $data['image']
+            ]);
+            return redirect()->route('product.index')->with('success','Berhasil mengganti produk');
+        }
+        $product->update([
+            'name' => $data['name'],
+        ]);
+        
+        return redirect()->route('product.index')->with('success','Berhasil mengganti produk');
     }
+
+    public function delete($id) {
+        $transactions = Product::where('id',$id)->first();
+        $transactions->delete();
+        return session()->put('message', 'Berhasil menghapus!');
+    } 
 }

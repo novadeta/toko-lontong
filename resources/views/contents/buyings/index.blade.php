@@ -59,8 +59,8 @@
                                             <tr>
                                                 <th>Tanggal</th>
                                                 <th>Produk</th>
+                                                <th>Total Harga</th>
                                                 <th>Catatan</th>
-                                                <th>Harga</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -79,8 +79,21 @@
                                                             </ul>
                                                         </td>
                                                         <td>Rp.  {{ number_format($debt_transaction->price,0,',',",") }}</td>
-                                                        <td>Rp.  {{ $debt_transaction->note }}</td>
-                                                        <td>Rp.  {{ number_format($debt_transaction->price,0,',',",") }}</td>
+                                                        <td>{{ $debt_transaction->note }}</td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-start gap-2">
+                                                                <a href="{{ route('buying.edit',$debt_transaction->id) }}" class="btn btn-primary">
+                                                                    <i class='bx bx-pencil'></i>
+                                                                </a>
+                                                                <form class="deleteButton" action="{{ route('buying.delete',$debt_transaction->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button type="submit" class="btn btn-danger">
+                                                                        <i class='bx bx-trash'></i>
+                                                                    </button>
+                                                                </form>
+                                                              </div>
+                                                        </td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -99,8 +112,8 @@
                                             <tr>
                                                 <th>Tanggal</th>
                                                 <th>Produk</th>
-                                                <th>Catatan</th>
                                                 <th>Harga</th>
+                                                <th>Catatan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -120,10 +133,10 @@
                                                                 @endforeach
                                                             </ul>
                                                         </td>
+                                                        <td>{{ number_format($debt_transaction->price,0,',',",") }}</td>
                                                         <td>
                                                             {{ $debt_transaction->note }}
                                                         </td>
-                                                        <td>{{ $debt_transaction->price }}</td>
                                                         <td>
                                                             <div class="d-flex justify-content-start gap-2">
                                                                 <form action="{{ route('buying.debt.update',$debt_transaction->id) }}" method="POST">
@@ -163,5 +176,45 @@
   <script>
     new DataTable('#penjualan');
     new DataTable('#hutanger');
+
+    const buttonDelete = document.querySelectorAll('.deleteButton')
+    buttonDelete.forEach(element => {
+      element.addEventListener('submit', function (event) {
+        event.preventDefault()
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-primary mx-2",
+            cancelButton: "btn btn-danger"
+          },
+          buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+        title: "Apakah Kamu Yakin?",
+        text: "Kamu tidak akan mendapatkannya kembali",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: "Kembali"
+      }).then((result) => {
+        if (result.isConfirmed) {
+         $.ajax({
+           url: `${event.target.action}`,
+           type: "POST",
+           headers: {
+             'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+           },
+           data: {
+             '_method' : 'DELETE'
+           },
+           success: function ({data}){
+             location.reload();
+           }
+         });
+       }
+      })
+    })  
+    });
+
   </script>
   @endsection

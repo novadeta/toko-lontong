@@ -96,7 +96,7 @@
                                     <th>No</th>
                                     <th>Gambar</th>
                                     <th>Produk</th>
-                                    <th>Penjualan</th>
+                                    <th>Terjual</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -108,15 +108,75 @@
                                       <img width="100" height="100" class="object-fit-cover" src="{{ asset('storage/photos/' . $product->image ) }}" alt="" srcset="">
                                     </td>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->sales_amount }}</td>
-                                    <td class="">
+                                    <td>{{ $product->sales_amount }} Pcs</td>
+                                    <td>
                                       <div class="d-flex justify-content-start gap-2">
-                                        <a href="" class="btn btn-primary">
+                                        <button 
+                                           class="btn btn-primary"
+                                           data-bs-toggle="modal"
+                                           data-bs-target="#modal-{{$product->id}}"
+                                        >
                                             <i class='bx bx-pencil'></i>
-                                        </a>
-                                        <a href="" class="btn btn-danger">
-                                            <i class='bx bx-trash'></i>
-                                        </a>
+                                        </button>
+                                        <div class="modal fade" id="modal-{{$product->id}}" tabindex="-1" aria-hidden="true">
+                                          <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="modalProductTitle">Tambah Produk</h5>
+                                                <button
+                                                  type="button"
+                                                  class="btn-close"
+                                                  data-bs-dismiss="modal"
+                                                  aria-label="Close"></button>
+                                              </div>
+                                              <form action="{{ route('product.update',$product->id) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf 
+                                                @method('PUT')
+                                              <div class="modal-body">
+                                                  <div class="row">
+                                                    <div class="col mb-3">
+                                                      <label for="nameWithTitle" class="form-label">Nama Produk</label>
+                                                      <input
+                                                        type="text"
+                                                        id="nameWithTitle"
+                                                        class="form-control"
+                                                        name="name"
+                                                        placeholder="Masukkan nama produk" 
+                                                        value="{{ $product->name }}"
+                                                        />
+                                                    </div>
+                                                  </div>
+                                                  <div class="row g-2">
+                                                    <div class="col mb-0">
+                                                      <label for="image" class="form-label">Gambar Sebelumnya</label>
+                                                      <img height="100" class="rounded w-100 object-fit-cover mb-3" src="{{ asset('storage') }}/photos/{{ $product->image }}" alt="" srcset="">
+                                                      <label for="image" class="form-label">Masukkan Gambar Baru</label>
+                                                      <input
+                                                        type="file"
+                                                        id="image"
+                                                        name="image"
+                                                        class="filepond"
+                                                          />
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Tutup
+                                                  </button>
+                                                  <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <form class="deleteButton" action="{{ route('product.delete',$product->id) }}" method="post">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger">
+                                              <i class='bx bx-trash'></i>
+                                          </button>
+                                        </form>
                                       </div>
                                     </td>
                                 </tr>
@@ -130,7 +190,6 @@
   </div>
   @endsection
   @section('script')
-
 <!-- include jQuery library -->
 
 <!-- include FilePond library -->
@@ -151,5 +210,44 @@
       });
 
     new DataTable('#data');
+
+    const buttonDelete = document.querySelectorAll('.deleteButton')
+    buttonDelete.forEach(element => {
+      element.addEventListener('submit', function (event) {
+        event.preventDefault()
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-primary mx-2",
+            cancelButton: "btn btn-danger"
+          },
+          buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+        title: "Apakah Kamu Yakin?",
+        text: "Kamu tidak akan mendapatkannya kembali",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: "Kembali"
+      }).then((result) => {
+        if (result.isConfirmed) {
+         $.ajax({
+           url: `${event.target.action}`,
+           type: "POST",
+           headers: {
+             'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+           },
+           data: {
+             '_method' : 'DELETE'
+           },
+           success: function ({data}){
+             location.reload();
+           }
+         });
+       }
+      })
+    })  
+    });
   </script>
   @endsection
